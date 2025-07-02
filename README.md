@@ -44,6 +44,7 @@ npm run dev
 
 ## 📁 Folder Structure
 
+```
 .
 ├── public/
 ├── src/
@@ -58,3 +59,4 @@ npm run dev
 │ └── App.jsx
 ├── tailwind.config.js
 └── README.md
+```
