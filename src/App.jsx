@@ -62,7 +62,7 @@ export default function App() {
   return (
     <div className='flex gap-4 p-4 mx-auto w-full'>
       <div className='w-1/2 p-2 mx-auto'>
-        <h1 className='text-2xl font-bold mb-4 text-center'>People</h1>
+        <h1 className='text-2xl font-bold mb-4 text-center'>Frontend Engineers Catalog</h1>
         <FiltersInput
           lastNameFilter={lastNameFilter}
           setLastNameFilter={setLastNameFilter}
