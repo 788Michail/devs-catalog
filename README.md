@@ -1,4 +1,4 @@
-# 👥 Developers Catalog – Frontend Engineer Assessment
+# 👥 Developers Catalog – Frontend Engineer
 
 A responsive web page built with **React** and **TailwindCSS** that allows users to search and explore a catalog of developers they may want to collaborate with.
 
