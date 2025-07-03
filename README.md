@@ -32,7 +32,7 @@ A responsive web page built with **React** and **TailwindCSS** that allows users
 
 ```bash
 # Clone the repo
-git clone https://github.com/michail788/devs-catalog.git
+git clone https://github.com/788michail/devs-catalog.git
 cd devs-catalog
 
 # Install dependencies
