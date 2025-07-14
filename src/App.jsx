@@ -13,6 +13,7 @@ export default function App() {
   const [lastNameFilter, setLastNameFilter] = useState('')
   const [languageFilter, setLanguageFilter] = useState('')
   const [selectedPerson, setSelectedPerson] = useState(null)
+  const [invitedPeople, setInvitedPeople] = useState([])
 
   const loadMorePeople = useCallback(() => {
     if (loading) return
@@ -27,7 +28,14 @@ export default function App() {
   }, [page, loading, lastNameFilter, languageFilter])
 
   const handleConfirmInvite = person => {
-    alert(`Invite sent to ${person.firstName} ${person.lastName}!`)
+    setInvitedPeople(prev => [...prev, person])
+    setSelectedPerson(null)
+    alert(`Invite sent to ${person.firstName} ${person.lastName}`)
+  }
+
+  const removePerson = person => {
+    setInvitedPeople(prev => prev.filter(p => p.email !== person.email))
+    alert(`Removed ${person.firstName} ${person.lastName} from invited list`)
   }
 
   useEffect(() => {
@@ -60,8 +68,8 @@ export default function App() {
   }, [loadMorePeople])
 
   return (
-    <div className='flex gap-4 p-4 mx-auto w-full'>
-      <div className='w-1/2 p-2 mx-auto'>
+    <div className='flex gap-4 p-4 mx-auto w-full max-md:flex-col'>
+      <div className='max-md:w-1/2 w-full p-2 mx-auto'>
         <h1 className='text-2xl font-bold mb-4 text-center'>Frontend Engineers Catalog</h1>
         <FiltersInput
           lastNameFilter={lastNameFilter}
@@ -77,6 +85,14 @@ export default function App() {
         <InviteModal person={selectedPerson} onClose={() => setSelectedPerson(null)} onConfirm={handleConfirmInvite} />
         {loading && <p className='text-center text-gray-400 mt-4'>Loading more...</p>}
         {!hasMorePeople && <p className='text-center text-gray-500 mt-4'>No more results</p>}
+      </div>
+      <div className='max-md:w-1/2 w-full p-2 mx-auto'>
+        <h2 className='text-xl font-bold mb-4 text-center'>Invited People</h2>
+        <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {invitedPeople.map((person, index) => (
+            <PersonCard key={index} person={person} onClick={() => removePerson(person)} showRemoveButton={true} />
+          ))}
+        </ul>
       </div>
     </div>
   )
