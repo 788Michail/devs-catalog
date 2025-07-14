@@ -88,6 +88,7 @@ export default function App() {
       </div>
       <div className='max-md:w-1/2 w-full p-2 mx-auto'>
         <h2 className='text-xl font-bold mb-4 text-center'>Invited People</h2>
+        {invitedPeople.length === 0 && <p className='text-center text-gray-500'>No people are invited</p>}
         <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {invitedPeople.map((person, index) => (
             <PersonCard key={index} person={person} onClick={() => removePerson(person)} showRemoveButton={true} />
